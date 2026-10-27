@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tor Network - Onion Routing</title>
+    <!-- Tailwind carregado para estrutura básica e tipografia -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para simular um terminal antigo e efeitos de glitch */
+        body {
+            background-color: #050505;
+            color: #a3a3a3; /* Texto cinza escuro/morto */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 2rem;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Animação de Glitch no Título */
+        .glitch-text {
+            position: relative;
+            color: #8b0000; /* Vermelho sangue escuro */
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: inline-block;
+            animation: flicker 4s infinite alternate;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+        }
+
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff0000;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #00ffcc;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(13px, 9999px, 86px, 0); }
+            5% { clip: rect(74px, 9999px, 14px, 0); }
+            10% { clip: rect(31px, 9999px, 98px, 0); }
+            15.0% { clip: rect(66px, 9999px, 21px, 0); }
+            20% { clip: rect(100px, 9999px, 60px, 0); }
+            25% { clip: rect(48px, 9999px, 12px, 0); }
+            30.0% { clip: rect(8px, 9999px, 73px, 0); }
+            35% { clip: rect(54px, 9999px, 33px, 0); }
+            40% { clip: rect(21px, 9999px, 91px, 0); }
+            45% { clip: rect(81px, 9999px, 47px, 0); }
+            50% { clip: rect(11px, 9999px, 7px, 0); }
+            55.0% { clip: rect(98px, 9999px, 51px, 0); }
+            60.0% { clip: rect(33px, 9999px, 29px, 0); }
+            65% { clip: rect(69px, 9999px, 83px, 0); }
+            70% { clip: rect(15px, 9999px, 45px, 0); }
+            75% { clip: rect(87px, 9999px, 62px, 0); }
+            80% { clip: rect(41px, 9999px, 19px, 0); }
+            85.0% { clip: rect(92px, 9999px, 99px, 0); }
+            90% { clip: rect(27px, 9999px, 56px, 0); }
+            95% { clip: rect(59px, 9999px, 38px, 0); }
+            100% { clip: rect(4px, 9999px, 88px, 0); }
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 22%, 24%, 55% {
+                opacity: 0.2;
+            }
+        }
+
+        .highlight-red {
+            color: #cc0000;
+        }
+
+        /* Efeito de scanline de monitores antigos CRT */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Container do Fórum */
+        .forum-container {
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: #0a0a0a;
+            box-shadow: 0 0 15px rgba(200, 0, 0, 0.05);
+        }
+
+        /* Classe para o texto oculto */
+        .hidden-cipher {
+            color: #0a0a0a; /* Exatamente a mesma cor do fundo para ficar invisível */
+            user-select: text;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Revela o texto com estilo de terminal quando selecionado/destacado pelo mouse */
+        .hidden-cipher::selection {
+            background-color: #8b0000;
+            color: #ffffff;
+        }
+        .hidden-cipher *::selection {
+            background-color: #8b0000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <div class="scanlines"></div>
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Cabeçalho Glitch -->
+        <div class="mb-8 border-b border-gray-800 pb-4">
+            <h1 class="glitch-text" data-text="Index of /halem_seven/">Index of /halem_seven/</h1>
+        </div>
+
+        <!-- Postagem do Fórum -->
+        <div class="forum-container">
+            <div class="border-b border-gray-800 pb-2 mb-4">
+                <p class="text-sm">
+                    <span class="text-gray-500">Autor:</span> <span class="highlight-red font-bold">Anonymous_339</span><br>
+                    <span class="text-gray-500">ID da Thread:</span> 0x8F4A2<br>
+                    <span class="text-gray-500">Data:</span> [DADO CORROMPIDO]<br>
+                </p>
+                <h2 class="text-xl mt-4 font-bold text-gray-300">Tópico: O Peso da Âncora (Método de Trânsito)</h2>
+            </div>
+
+            <div class="leading-relaxed whitespace-pre-wrap text-sm">
+Para os irmãos que buscam acelerar a colheita, os antigos métodos já se tornam obsoletos.
+
+Até o momento, todos os processos foram lentos, levando uma única pessoa com pequenas interferências por anos para ser consumida por completo. Outros métodos foram criados para acelerar, fazendo com que o processo de ruptura da mente agisse mais rápido, mas ainda levava alguns dias entre uma alma e a próxima.
+
+A resposta está na <span class="highlight-red font-bold">Âncora</span>.
+
+A Âncora não é uma chave. Chaves abrem portas. A Âncora é um PESO. Ela puxa as mentes desavisadas direto para O Fundo. 
+
+Mas a regra do alinhamento é estrita: o objeto deve ser carregado por um "vaso ignorante" e amaldiçoar um local. Aquele que carrega o talismã não pode, em hipótese alguma, saber o que está carregando. A ignorância deles é o combustível para que o talismã aja no local em que for deixado.
+
+Infelizmente, a âncora tem uma aura repulsiva, afastando todos que a virem de perto sem que saibam o motivo. Afetando apenas os poucos distraídos que não a notam até ser tarde demais. 
+
+Ao ser deixada em um local fechado quando o vaso ignorante sai, todos da área são vinculados instantaneamente. Sem chance de retorno.
+
+<span class="highlight-red font-bold">O oculto reina.</span>
+            </div>
+
+            <!-- MENSAGEM OCULTA - SÓ APARECE SELECIONANDO O TEXTO -->
+            <div class="hidden-cipher">
+Wyhçh kh zl - tlpv-kph - xbhsxbly kph - zhilyh wlsv xbl wyvjbyhy. Zluoh: ylpuhkv
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="mt-8 text-center text-xs text-gray-700">
+            <p>> fim do arquivo.</p>
+        </div>
+    </div>
+</body>
+</html>
