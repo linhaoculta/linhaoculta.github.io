@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sth'al'emh - Pesquisa Google</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #202124;
+            color: #bdc1c6;
+            font-family: Roboto, Arial, sans-serif;
+        }
+        .search-input {
+            background-color: #303134;
+            border: 1px solid transparent;
+            color: #e8eaed;
+            transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input:hover {
+            background-color: #303134;
+            border-color: #5f6368;
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        }
+        .search-input:focus-within {
+            background-color: #303134;
+            border-color: #5f6368;
+        }
+        .link-title {
+            color: #8ab4f8;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+        .link-title:hover {
+            text-decoration: underline;
+        }
+        .link-url {
+            color: #dadce0;
+            font-size: 14px;
+        }
+        .snippet-text {
+            color: #bdc1c6;
+            font-size: 14px;
+            line-height: 1.58;
+        }
+        .bold-term {
+            font-weight: bold;
+            color: #e8eaed;
+        }
+        /* Efeitos da caixa de IA */
+        .ai-overview-box {
+            background: linear-gradient(135deg, rgba(40,42,74,1) 0%, rgba(32,33,36,1) 100%);
+            border: 1px solid #4a4b6a;
+            border-radius: 16px;
+        }
+        .ai-shimmer {
+            background: linear-gradient(90deg, #a8c7fa 0%, #d3e3fd 50%, #a8c7fa 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+        .login-btn {
+            background-color: #8ab4f8;
+            color: #202124;
+            font-weight: 500;
+        }
+        .login-btn:hover {
+            background-color: #93bbf9;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Top Bar -->
+    <div class="flex items-center p-6 pb-0">
+        <!-- Logo -->
+        <div class="text-2xl font-bold mr-10 tracking-tighter cursor-pointer" style="font-family: 'Product Sans', Arial, sans-serif;">
+            <span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="flex-grow max-w-[690px] relative">
+            <div class="search-input w-full rounded-full py-2.5 px-4 flex items-center shadow-sm">
+                <!-- Search Icon -->
+                <span class="mr-3 text-[#9aa0a6]">
+                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </span>
+                
+                <input type="text" value="Sth'al'emh" class="bg-transparent border-none outline-none w-full text-[16px] text-white" spellcheck="false">
+                
+                <!-- Right Icons (Mic, Camera) -->
+                <div class="flex items-center space-x-3 ml-2 cursor-pointer">
+                    <svg class="w-5 h-5" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285f4" d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z"></path><path fill="#34a853" d="m11 18.08h2v3.92h-2z"></path><path fill="#fbbc05" d="m7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45 0.56 2.42 1.47 3.38v0.32l-1.15 1.18z"></path><path fill="#ea4335" d="m12 16.93a4.97 5.25 0 0 1 -3.54 -1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"></path></svg>
+                    <svg class="w-5 h-5" focusable="false" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="192" width="192"></rect><g><circle cx="144" cy="144" fill="#34a853" r="16"></circle><circle cx="96" cy="120" fill="#4285f4" r="24"></circle><path d="M24,136v24c0,13.25,10.75,24,24,24 h24v-24H48v-24H24z" fill="#fbbc04"></path><path d="M144,24h-24v24h24v24h24V48 C168,34.75,157.25,24,144,24z" fill="#ea4335"></path><path d="M48,24C34.75,24,24,34.75,24,48v24h24V48h24V24H48z" fill="#4285f4"></path></g></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logged Out User Section -->
+        <div class="flex-grow flex items-center justify-end space-x-4">
+            <svg class="w-6 h-6 text-gray-300 cursor-pointer hover:text-white" focusable="false" viewBox="0 0 24 24"><path fill="currentColor" d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c-1.1,0 -2,0.9 -2,2s0.9,2 2,2 2,-0.9 2,-2 -0.9,-2 -2,-2zM18,20c-1.1,0 -2,0.9 -2,2s0.9,2 2,2 2,-0.9 2,-2 -0.9,-2 -2,-2z"></path></svg>
+            <button class="login-btn rounded-md px-6 py-2 text-sm transition cursor-pointer">Fazer login</button>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex items-center space-x-6 pl-[172px] mt-6 border-b border-[#3c4043] text-sm text-[#9aa0a6]">
+        <div class="text-[#8ab4f8] border-b-[3px] border-[#8ab4f8] pb-3 font-medium cursor-pointer flex items-center">
+            <svg class="w-4 h-4 mr-1.5 fill-current" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+            Todas
+        </div>
+        <div class="hover:text-gray-200 cursor-pointer pb-3">Imagens</div>
+        <div class="hover:text-gray-200 cursor-pointer pb-3">Notícias</div>
+        <div class="hover:text-gray-200 cursor-pointer pb-3">Vídeos</div>
+        <div class="hover:text-gray-200 cursor-pointer pb-3">Fóruns</div>
+        <div class="hover:text-gray-200 cursor-pointer pb-3">Mais</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-[652px] ml-[172px] mt-4">
+        
+        <!-- Resultados Info -->
+        <div class="text-[#9aa0a6] text-[14px] mb-6 font-sans">
+            Aproximadamente 4 resultados (0,28 segundos) 
+        </div>
+
+        <!-- AI Overview Box -->
+        <div class="ai-overview-box p-5 mb-8 shadow-lg">
+            <div class="flex items-center mb-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                    <path d="M19.3333 14.6667L18.1066 17.3599L15.4133 18.5866L18.1066 19.8133L19.3333 22.5066L20.5599 19.8133L23.2533 18.5866L20.5599 17.3599L19.3333 14.6667ZM6.82662 1.49333L4.82662 5.89333L0.426625 7.89333L4.82662 9.89333L6.82662 14.2933L8.82662 9.89333L13.2266 7.89333L8.82662 5.89333L6.82662 1.49333ZM15.4133 1.49333L14.1866 4.18666L11.4933 5.41333L14.1866 6.63999L15.4133 9.33333L16.6399 6.63999L19.3333 5.41333L16.6399 4.18666L15.4133 1.49333Z" fill="#a8c7fa"/>
+                </svg>
+                <span class="text-[18px] ai-shimmer font-medium">Visão geral criada por IA</span>
+            </div>
+            
+            <div class="text-[#e8eaed] text-[15px] leading-relaxed">
+                Com base em fontes da internet, <span class="font-bold">Sth'al'emh</span> é um termo de origem desconhecida, frequentemente debatido em fóruns de ocultismo e lendas urbanas contemporâneas. Especialistas não têm consenso sobre seu significado exato, mas ele é geralmente associado a:
+                <ul class="list-disc ml-5 mt-2 mb-2 space-y-1">
+                    <li>Um estado de desorientação espacial que ocorre em grandes metrópoles, onde vítimas relatam amnésia e sensação de frio extremo.</li>
+                    <li>Um possível dialeto ou idioma morto cujas raízes fonéticas não correspondem a nenhuma linguagem humana registrada.</li>
+                </ul>
+                <p>Recentemente, o termo ganhou atenção em comunidades de investigação amadora devido ao aparecimento da palavra em mensagens criptografadas de pessoas desaparecidas, sugerindo uma possível conexão com um grupo ou culto urbano não identificado.</p>
+            </div>
+            
+            <div class="text-[#9aa0a6] text-[12px] mt-4 flex items-center">
+                <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                As visões gerais de IA são experimentais. Saiba mais.
+            </div>
+        </div>
+
+        <!-- Result 1: Academic / Archive -->
+        <div class="mb-8">
+            <div class="flex items-center text-sm mb-1.5">
+                <img src="https://archive.org/images/glogo.png" class="w-5 h-5 mr-3 rounded-sm" alt="Archive">
+                <div class="flex flex-col">
+                    <span class="text-[#e8eaed] text-sm leading-tight">Internet Archive</span>
+                    <span class="link-url leading-tight">https://archive.org › details › lexicon_of_dead_tongues</span>
+                </div>
+            </div>
+            <a href="#" class="link-title inline-block mb-1">Lexicon of the Lost Ages - Vol. 4 - The Unknown Roots</a>
+            <div class="snippet-text">
+                ...the exact translation is heavily debated among scholars. The phonetic anomaly <span class="bold-term">Sth'al'emh</span> appears in fragmented texts, often associated with a "great cold" or "the void that consumes the mind"...
+            </div>
+        </div>
+
+        <!-- Result 2: The Facebook Post (The Clue) -->
+        <div class="mb-8">
+            <div class="flex items-center text-sm mb-1.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" class="w-5 h-5 mr-3 bg-white rounded-full p-0.5" alt="Facebook">
+                <div class="flex flex-col">
+                    <span class="text-[#e8eaed] text-sm leading-tight">Facebook</span>
+                    <span class="link-url leading-tight">https://www.facebook.com › pedro.miranda › posts</span>
+                </div>
+            </div>
+            <a href="../facebook.com/pedro.miranda" class="link-title inline-block mb-1">DESAPARECIDO - PEDRO MIRANDA</a>
+            <div class="snippet-text">
+                PEDRO MIRANDA, 40 anos. Desaparecido há 3 semanas. Saiu de casa com uma mochila e não voltou. O celular dá caixa postal. Se alguém tiver informações...
+            </div>
+        </div>
+
+        <!-- Result 3: Occult Forum -->
+        <div class="mb-8">
+            <div class="flex items-center text-sm mb-1.5">
+                <div class="w-5 h-5 mr-3 bg-gray-600 rounded-full flex items-center justify-center text-xs text-white">T</div>
+                <div class="flex flex-col">
+                    <span class="text-[#e8eaed] text-sm leading-tight">Theosophy Esoterica</span>
+                    <span class="link-url leading-tight">https://www.theosophy-esoterica.net › forums › thread</span>
+                </div>
+            </div>
+            <a href="#" class="link-title inline-block mb-1">The Cults of the Deep: Translations of the Unseen</a>
+            <div class="snippet-text">
+                ...European occultists in the 18th century documented the whisper of <span class="bold-term">Sth'al'emh</span>. Warning: modern practitioners report severe migraines, amnesia, and geometric distortions in their peripheral vision...
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
