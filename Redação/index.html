@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensaio Filosófico - Pedro Miranda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Configuração exata para impressão em folha A4 */
+        @page {
+            size: A4;
+            margin: 0; /* Remove margens padrão do navegador */
+        }
+
+        body {
+            background-color: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            margin: 0;
+            -webkit-print-color-adjust: exact; /* Força impressão de cores e fundos */
+            print-color-adjust: exact;
+        }
+
+        .paper {
+            background-color: #fdfbf7;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            width: 210mm;
+            height: 297mm; /* Dimensões exatas de um A4 */
+            padding: 20mm 20mm; /* Margens internas simulando margem de impressão */
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            font-family: 'Merriweather', serif;
+            color: #2c2c2c;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden; /* Evita que crie uma segunda página vazia */
+        }
+
+        .red-pen {
+            font-family: 'Caveat', cursive;
+            color: #d11a2a;
+            line-height: 0.8;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .highlight {
+            background-color: rgba(255, 255, 0, 0.4);
+        }
+
+        .underline-red {
+            text-decoration: underline;
+            text-decoration-color: #d11a2a;
+            text-decoration-style: wavy;
+        }
+
+        /* Ajustes para quando acionar o Ctrl+P */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .paper {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper">
+        <!-- Cabeçalho -->
+        <div class="mb-8 text-[13px] leading-relaxed">
+            <p><strong>UNIVERSIDADE DE SÃO PAULO - FFLCH</strong></p>
+            <p><strong>Aluno:</strong> Pedro Miranda</p>
+            <p><strong>Disciplina:</strong> Ontologia Contemporânea</p>
+            <p><strong>Professor:</strong> Saulo Barros</p>
+        </div>
+
+        <h1 class="text-2xl font-bold text-center mb-8">A Ontologia da Subtração:<br>O oculto como entidade viva</h1>
+
+        <!-- Nota 1 do Professor -->
+        <div class="red-pen" style="top: 45mm; right: 15mm; width: 50mm; transform: rotate(-3deg); font-size: 1.3rem;">
+            Pedro, título pretensioso. Onde entra Schopenhauer nisso?
+        </div>
+
+        <!-- Texto do Aluno -->
+        <p class="mb-4 indent-8 text-[15px] text-justify">
+            A tradição filosófica ocidental costuma tratar o "nada" ou o "vazio" como uma ausência. Uma lacuna que o ser humano preenche com angústia existencial. Mas proponho aqui uma observação prática e aterrorizante: e se o oculto não for uma ausência, mas sim uma presença predatória? E se ele tiver fome?
+        </p>
+
+        <p class="mb-4 indent-8 text-[15px] text-justify">
+            A metrópole moderna não é um espaço habitável, é um estômago de concreto. A digestão do ser humano não começa pelo corpo, mas pelas memórias. <span class="highlight">A entidade mastiga o nosso passado primeiro.</span> Você percebe quando esquece o cheiro da casa da sua infância, ou quando um número que você sabia de cor desaparece deixando apenas um buraco escuro e frio na mente.
+        </p>
+
+        <!-- Nota 2 do Professor -->
+        <div class="red-pen" style="top: 105mm; left: 8mm; width: 45mm; transform: rotate(2deg); font-size: 1.2rem;">
+            Metáfora literária demais. Foco na filosofia e menos na poesia niilista, por favor.
+        </div>
+
+        <p class="mb-4 indent-8 text-[15px] text-justify pl-6">
+            Não é uma metáfora. A geometria muda quando ninguém está olhando. <span class="underline-red">Eles andam entre nós, cobrindo-se com sobretudos pesados sob o sol escaldante, porque carregam o frio do lugar para onde estão nos puxando.</span> Eles não têm mais rostos ou propósitos, são apenas cascas vazias, os resíduos do que a entidade já digeriu.
+        </p>
+        
+        <p class="mb-4 indent-8 text-[15px] text-justify">
+            Quando a âncora é lançada em um ambiente fechado, não há escapatória. O véu cai. Eles repetem que a passagem não é nossa, mas já fomos marcados. Meus sentidos estão falhando. Eu não sinto mais o gosto do café. A cor cinza está vazando para os meus espelhos. O tempo do relógio não condiz com o céu.
+        </p>
+
+        <p class="mb-6 indent-8 text-[15px] font-bold text-justify">
+            O oculto não tem moralidade. Ele apenas quer crescer.
+        </p>
+
+        <!-- Nota Final do Professor -->
+        <div class="border-t-2 border-gray-300 mt-8 pt-6">
+            <div class="red-pen relative" style="transform: rotate(-1deg); font-size: 1.4rem; width: 100%;">
+                <span class="text-3xl font-bold block mb-3">Nota: 1,0</span>
+                Pedro, sinceramente... o ensaio começou bem, mas acabou virando uma poesia esquisita sem nenhum embasamento acadêmico. Isso não é um jogo que você pode simplesmente pegar as ideias mais mirabolantes e transformar em um monstro.<br><br>
+                A alegoria das pessoas de sobretudo são delírios de quem está lendo ficção barata demais e estudando de menos. Se está acontecendo algo mais sério, seria bom procurar o centro de apoio psicológico da universidade. Não use minha matéria como diário de pesadelos.<br><br>
+                Vou deixar passar dessa vez, porque você costuma ser um aluno muito esforçado. Refaça o texto e me entregue na próxima aula. Com embasamento dessa vez!!
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
